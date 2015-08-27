@@ -13,7 +13,7 @@ Questions it asks (with sample answers)
 1. **what is the starting version [0.1-SNAPSHOT]:** 1
 1. **what scala version do you want to use [2.11.7]:** 2.11.7
 
-then it’ll create a
+then it’ll create the following files:
 * build.sbt
 * Boot.scala
 * Paths.scala
@@ -21,10 +21,10 @@ then it’ll create a
 and populate the values given as needed.
 
 it also creates the structure:
-* project
+* project/
 * src/main/scala/bootstrap/liftweb/
-* src/main/scala/$orgStructure/util
-* src/main/resources/props
-* src/main/webapp/WEB-INF
-* src/main/webapp/templates-hidden
-* src/main/webapp/static
+* src/main/scala/$orgStructure/util/
+* src/main/resources/props/
+* src/main/webapp/WEB-INF/
+* src/main/webapp/templates-hidden/
+* src/main/webapp/static/
