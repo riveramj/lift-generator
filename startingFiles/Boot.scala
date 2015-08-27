@@ -7,6 +7,8 @@ import net.liftweb._
   import common._
   import http._
 
+import ${organization}.util._
+
 /**
  * A class that's instantiated early and run.  It allows the application
  * to modify lift's environment
@@ -21,7 +23,7 @@ class Boot {
 
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
-      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd
+      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
     
     // Make the spinny image go away when it ends
     LiftRules.ajaxEnd =

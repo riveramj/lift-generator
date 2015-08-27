@@ -57,4 +57,4 @@ boot=$(sed -e "s/\${organization}/$organization/" $bootFilePath)
 echo "$boot" > $bootFilePath
 
 paths=$(sed -e "s/\${organization}/$organization/" $pathsFilePath)
-echo "$boot" > $pathsFilePath
+echo "$paths" > $pathsFilePath
