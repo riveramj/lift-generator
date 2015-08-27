@@ -1,21 +1,23 @@
 #!/bin/bash
 
-echo "Enter the path for the new lift project"
+echo "Enter the path for the new lift project:"
 read path
 
-echo "what is the app name"
+echo "what is the app name:"
 read appName
 
-echo "what is the app organization [com.example]"
+echo "what is the app organization (format: com.example):"
 read organization
 
 folderStructure=${organization//"."/"/"}
 
-echo "what is the starting version [0.1-SNAPSHOT]"
-read appVersion
+appVersionDefault="0.1-SNAPSHOT"
+read -p "what is the starting version [$appVersionDefault]: " appVersion
+appVersion=${appVersion:-$appVersionDefault}
 
-echo "what scala version do you want to use [2.11.7]"
-read scalaVersion
+scalaVersionCurrent="2.11.7"
+read -p "what scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
+scalaVersion=${scalaVersion:-$scalaVersionCurrent}
 
 cd "startingFiles"
 
