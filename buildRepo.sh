@@ -17,25 +17,33 @@ read appVersion
 echo "what scala version do you want to use [2.11.7]"
 read scalaVersion
 
-cp "./startingFiles/build.sbt" $path"/build.sbt"
+cd "startingFiles"
+
+scriptStartingFilesPath=`pwd`
+
+pathsFilePath="$path/src/main/scala/$folderStructure/util/Paths.scala"
+bootFilePath="$path/src/main/scala/bootstrap/liftweb/Boot.scala"
 
 cd $path
 
 mkdir -p "project"
-mkdir -p "src/main/scala"
-mkdir -p "src/main/webapp"
-mkdir -p "src/main/resources"
-mkdir -p "src/main/scala/bootstrap/liftweb"
-mkdir -p "src/main/scala/"$folderStructure
+mkdir -p "src/main/scala/bootstrap/liftweb/"
+mkdir -p "src/main/scala/$folderStructure/util"
 mkdir -p "src/main/resources/props"
 mkdir -p "src/main/webapp/WEB-INF"
 mkdir -p "src/main/webapp/templates-hidden"
 mkdir -p "src/main/webapp/static"
 
-touch "project/plugins.sbt"
 touch "src/main/resources/logback.xml"
 touch "src/main/resources/props/default.props"
-touch "src/main/scala/bootstrap/liftweb/Boot.scala"
+
+cp "$scriptStartingFilesPath/build.sbt" "./build.sbt"
+
+cp "$scriptStartingFilesPath/plugins.sbt" "./project/plugins.sbt"
+
+cp "$scriptStartingFilesPath/Boot.scala" $bootFilePath
+
+cp "$scriptStartingFilesPath/Paths.scala" $pathsFilePath
 
 build=$(sed \
   -e "s/\${appName}/$appName/" \
@@ -43,5 +51,10 @@ build=$(sed \
   -e "s/\${organization}/$organization/" \
   -e "s/\${scalaVersion}/$scalaVersion/" \
   "build.sbt")
-
 echo "$build" > "./build.sbt"
+
+boot=$(sed -e "s/\${organization}/$organization/" $bootFilePath)
+echo "$boot" > $bootFilePath
+
+paths=$(sed -e "s/\${organization}/$organization/" $pathsFilePath)
+echo "$boot" > $pathsFilePath

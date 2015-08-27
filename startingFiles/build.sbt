@@ -19,7 +19,6 @@ resolvers ++= Seq("snapshots" at "https://oss.sonatype.org/content/repositories/
 libraryDependencies ++= {
   val liftVersion = "2.6.2"
   Seq(
-    "ch.qos.logback"         %  "logback-classic"        % "1.1.3",
     "org.eclipse.jetty"      %  "jetty-webapp"           % "9.2.10.v20150310" % "container; compile->default"
   )
 }
