@@ -42,16 +42,28 @@ mkdir -p "src/main/webapp/templates-hidden"
 mkdir -p "src/main/webapp/static"
 mkdir -p "src/main/webapp/images"
 
+mkdir -p "src/test/resources"
+mkdir -p "src/test/scala/$folderStructure/comet"
+mkdir -p "src/test/scala/$folderStructure/snippet"
+mkdir -p "src/test/scala/$folderStructure/model"
+mkdir -p "src/test/scala/$folderStructure/util"
+
 # Generate .keep files to upload file structure to Github w/o files
 touch "src/main/scala/$folderStructure/snippet/.keep"
 touch "src/main/scala/$folderStructure/model/.keep"
 touch "src/main/scala/$folderStructure/comet/.keep"
 touch "src/main/webapp/WEB-INF/.keep"
 
+touch "src/test/scala/$folderStructure/comet/.keep"
+touch "src/test/scala/$folderStructure/snippet/.keep"
+touch "src/test/scala/$folderStructure/model/.keep"
+touch "src/test/scala/$folderStructure/util/.keep"
+
 # Create empty files as placeholders
 touch "src/main/webapp/index.html"
 touch "src/main/webapp/static/index.html"
 touch "src/main/resources/logback.xml"
+touch "src/test/resources/logback-test.xml"
 touch "src/main/resources/props/default.props"
 touch "src/main/webapp/templates-hidden/default.html"
 
@@ -75,3 +87,5 @@ echo "$boot" > $bootFilePath
 
 paths=$(sed -e "s/\${organization}/$organization/" $pathsFilePath)
 echo "$paths" > $pathsFilePath
+
+
