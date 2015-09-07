@@ -3,6 +3,22 @@
 # Ask basic app questions
 echo "Enter the path for the new lift project:"
 read appPath
+if [ ! -d "`eval echo ${appPath}`" ]; then
+
+  createPathResponse=""
+  while [[ ! $createPathResponse =~ ^[YNyn]$ ]]; do
+    read -p "Path does not exist, create directory? [Y/N]: " createPathResponse
+
+    case $createPathResponse in
+      [yY]) mkdir -p "`eval echo ${appPath}`";;
+      [nN])
+        echo "Generator is ending. Thanks!"
+        exit
+        ;;
+      *)  echo "$createPathResponse is not a valid response";;
+    esac
+  done
+fi
 
 echo "what is the app name:"
 read appName
