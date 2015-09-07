@@ -1,8 +1,14 @@
 #!/bin/bash
 
+scriptDir=`pwd`
+startingFilesDir="$scriptDir/startingFiles"
+
 # Ask basic app questions
-echo "Enter the path for the new lift project:"
-read appPath
+appPath=""
+while [ -z "$appPath" ]; do
+  read -p "Enter the path for the new lift project: " appPath
+done
+
 if [ ! -d "`eval echo ${appPath}`" ]; then
 
   createPathResponse=""
@@ -20,11 +26,18 @@ if [ ! -d "`eval echo ${appPath}`" ]; then
   done
 fi
 
-echo "what is the app name:"
-read appName
+cd "`eval echo ${appPath}`"
+appPath=`pwd`
 
-echo "what is the app organization (format: com.example):"
-read organization
+appName=""
+while [ -z "$appName" ]; do
+  read -p "what is the app name: " appName
+done
+
+organization=""
+while [ -z "$organization" ]; do
+  read -p "what is the app organization (format: com.example): " organization
+done
 
 folderStructure=${organization//"."/"/"}
 
@@ -35,10 +48,6 @@ appVersion=${appVersion:-$appVersionDefault}
 scalaVersionCurrent="2.11.7"
 read -p "what scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
 scalaVersion=${scalaVersion:-$scalaVersionCurrent}
-
-cd "startingFiles"
-
-scriptStartingFilesPath=`pwd`
 
 pathsFilePath="$appPath/src/main/scala/$folderStructure/util/Paths.scala"
 bootFilePath="$appPath/src/main/scala/bootstrap/liftweb/Boot.scala"
@@ -84,10 +93,10 @@ touch "src/main/resources/props/default.props"
 touch "src/main/webapp/templates-hidden/default.html"
 
 # Load files with default values
-cp "$scriptStartingFilesPath/build.sbt" "./build.sbt"
-cp "$scriptStartingFilesPath/plugins.sbt" "./project/plugins.sbt"
-cp "$scriptStartingFilesPath/Boot.scala" $bootFilePath
-cp "$scriptStartingFilesPath/Paths.scala" $pathsFilePath
+cp "$startingFilesDir/build.sbt" "./build.sbt"
+cp "$startingFilesDir/plugins.sbt" "./project/plugins.sbt"
+cp "$startingFilesDir/Boot.scala" $bootFilePath
+cp "$startingFilesDir/Paths.scala" $pathsFilePath
 
 #Replace values in created default files
 build=$(sed \
