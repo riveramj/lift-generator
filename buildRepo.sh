@@ -49,6 +49,14 @@ scalaVersionCurrent="2.11.7"
 read -p "what scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
 scalaVersion=${scalaVersion:-$scalaVersionCurrent}
 
+buildFileChoice=""
+while [[ ! $buildFileChoice =~ ^[1-2]$ ]]; do
+  read -p "Choose a build file to use. 
+    [1] build.sbt 
+    [2] build.scala
+  " buildFileChoice
+done
+
 pathsFilePath="$appPath/src/main/scala/$folderStructure/util/Paths.scala"
 bootFilePath="$appPath/src/main/scala/bootstrap/liftweb/Boot.scala"
 
@@ -93,19 +101,28 @@ touch "src/main/resources/props/default.props"
 touch "src/main/webapp/templates-hidden/default.html"
 
 # Load files with default values
-cp "$startingFilesDir/build.sbt" "./build.sbt"
+
+if [ $buildFileChoice == 1 ]; then # 1 == build.sbt | 2 == build.scala
+  cp "$startingFilesDir/build.sbt" "./build.sbt"
+  buildFilePath="./build.sbt"
+else 
+  cp "$startingFilesDir/build.scala" "./project/build.scala"
+  buildFilePath="./project/build.scala"
+fi
+
 cp "$startingFilesDir/plugins.sbt" "./project/plugins.sbt"
 cp "$startingFilesDir/Boot.scala" $bootFilePath
 cp "$startingFilesDir/Paths.scala" $pathsFilePath
 
 #Replace values in created default files
+
 build=$(sed \
   -e "s/\${appName}/$appName/" \
   -e "s/\${appVersion}/$appVersion/" \
   -e "s/\${organization}/$organization/" \
   -e "s/\${scalaVersion}/$scalaVersion/" \
-  "build.sbt")
-echo "$build" > "./build.sbt"
+  $buildFilePath)
+echo "$build" > "$buildFilePath"
 
 boot=$(sed -e "s/\${organization}/$organization/" $bootFilePath)
 echo "$boot" > $bootFilePath
