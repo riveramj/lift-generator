@@ -31,22 +31,22 @@ appPath=`pwd`
 
 appName=""
 while [ -z "$appName" ]; do
-  read -p "what is the app name: " appName
+  read -p "What is the app name: " appName
 done
 
 organization=""
 while [ -z "$organization" ]; do
-  read -p "what is the app organization (format: com.example): " organization
+  read -p "What is the app organization (format: com.example): " organization
 done
 
 folderStructure=${organization//"."/"/"}
 
 appVersionDefault="0.1-SNAPSHOT"
-read -p "what is the starting version [$appVersionDefault]: " appVersion
+read -p "What is the starting version [$appVersionDefault]: " appVersion
 appVersion=${appVersion:-$appVersionDefault}
 
 scalaVersionCurrent="2.11.7"
-read -p "what scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
+read -p "What scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
 scalaVersion=${scalaVersion:-$scalaVersionCurrent}
 
 buildFileChoice=""
