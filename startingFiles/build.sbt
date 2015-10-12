@@ -12,9 +12,10 @@ scalaVersion := "${scalaVersion}"
 
 seq(webSettings :_*)
 
-resolvers ++= Seq("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
-                  "releases"  at "https://oss.sonatype.org/content/repositories/releases"
-              )
+resolvers ++= Seq(
+  "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+  "releases"  at "https://oss.sonatype.org/content/repositories/releases"
+)
 
 libraryDependencies ++= {
   val liftVersion = "2.6.2"
