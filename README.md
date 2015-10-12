@@ -13,8 +13,8 @@ Issues / Pull Requests welcome.
 1. **What is the starting version [0.1-SNAPSHOT]:**
 1. **What scala version do you want to use [2.11.7]:**
 1. **Choose a build file to use.**
-  1. [1] build.sbt 
-  1. [2] build.scala
+  * [1] build.sbt 
+  * [2] build.scala
 
 It’ll create the following files with values:
 * build.sbt/build.scala
