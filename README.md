@@ -8,10 +8,10 @@ Issues / Pull Requests welcome.
 
 1. **Enter the path for the new lift project [/amazing/new/app/path]**
   1. *Path will be verified and prompt if it should be created*
-1. **what is the app name:**
-1. **what is the app organization [com.example]:**
-1. **what is the starting version [0.1-SNAPSHOT]:**
-1. **what scala version do you want to use [2.11.7]:**
+1. **What is the app name:**
+1. **What is the app organization [com.example]:**
+1. **What is the starting version [0.1-SNAPSHOT]:**
+1. **What scala version do you want to use [2.11.7]:**
 1. **Choose a build file to use.**
   1. [1] build.sbt 
   1. [2] build.scala
