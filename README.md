@@ -1,4 +1,4 @@
-# Liftweb Generator 
+# Lift Generator 
 
 Lift projects require a number of folders and files for a basic project. This generator will ask some basic questions and then create a skeleton structure to help speed up the setup process.
 
