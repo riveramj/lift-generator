@@ -95,8 +95,7 @@ touch "src/test/scala/$folderStructure/util/.keep"
 # Create empty files as placeholders
 touch "src/main/webapp/index.html"
 touch "src/main/webapp/static/index.html"
-touch "src/main/resources/logback.xml"
-touch "src/test/resources/logback-test.xml"
+touch "src/test/resources/default.logback-test.xml"
 touch "src/main/resources/props/default.props"
 touch "src/main/webapp/templates-hidden/default.html"
 
@@ -113,6 +112,7 @@ fi
 cp "$startingFilesDir/plugins.sbt" "./project/plugins.sbt"
 cp "$startingFilesDir/Boot.scala" $bootFilePath
 cp "$startingFilesDir/Paths.scala" $pathsFilePath
+cp "$startingFilesDir/default.logback.xml" "src/main/resources/default.logback.xml"
 
 #Replace values in created default files
 
