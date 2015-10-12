@@ -4,7 +4,7 @@ Lift projects require a number of folders and files for a basic project. This ge
 
 Issues / Pull Requests welcome.
 
-####Questions it asks (with sample answers)
+####Questions it asks
 
 1. **Enter the path for the new lift project [/amazing/new/app/path]**
   1. *Path will be verified and prompt if it should be created*
