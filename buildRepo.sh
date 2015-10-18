@@ -85,7 +85,6 @@ mkdir -p "src/test/scala/$folderStructure/util"
 touch "src/main/scala/$folderStructure/snippet/.keep"
 touch "src/main/scala/$folderStructure/model/.keep"
 touch "src/main/scala/$folderStructure/comet/.keep"
-touch "src/main/webapp/WEB-INF/.keep"
 
 touch "src/test/scala/$folderStructure/comet/.keep"
 touch "src/test/scala/$folderStructure/snippet/.keep"
@@ -113,6 +112,7 @@ cp "$startingFilesDir/plugins.sbt" "./project/plugins.sbt"
 cp "$startingFilesDir/Boot.scala" $bootFilePath
 cp "$startingFilesDir/Paths.scala" $pathsFilePath
 cp "$startingFilesDir/default.logback.xml" "src/main/resources/default.logback.xml"
+cp "$startingFilesDir/web.xml" "src/main/webapp/WEB-INF/web.xml"
 
 #Replace values in created default files
 
