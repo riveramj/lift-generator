@@ -11,9 +11,11 @@ done
 
 if [ ! -d "`eval echo ${appPath}`" ]; then
 
+  createPathResponseDefault="Y"
   createPathResponse=""
   while [[ ! $createPathResponse =~ ^[YNyn]$ ]]; do
     read -p "Path does not exist, create directory? [Y/n]: " createPathResponse
+    createPathResponse=${createPathResponse:-$createPathResponseDefault}
 
     case $createPathResponse in
       [yY]) mkdir -p "`eval echo ${appPath}`";;
