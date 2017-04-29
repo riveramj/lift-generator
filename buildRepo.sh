@@ -47,7 +47,7 @@ appVersionDefault="0.1-SNAPSHOT"
 read -p "What is the starting version [$appVersionDefault]: " appVersion
 appVersion=${appVersion:-$appVersionDefault}
 
-scalaVersionCurrent="2.11.7"
+scalaVersionCurrent="2.12.2"
 read -p "What scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
 scalaVersion=${scalaVersion:-$scalaVersionCurrent}
 

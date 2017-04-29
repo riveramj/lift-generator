@@ -10,7 +10,7 @@ organization := "${organization}"
 
 scalaVersion := "${scalaVersion}"
 
-seq(webSettings :_*)
+Seq(webSettings :_*)
 
 resolvers ++= Seq(
   "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
@@ -18,7 +18,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= {
-  val liftVersion = "2.6.2"
+  val liftVersion = "3.0.1"
   Seq(
     "ch.qos.logback"      %  "logback-classic"    % "1.1.3",
     "org.eclipse.jetty"   %  "jetty-webapp"       % "9.2.13.v20150730" % "container; compile->default",
