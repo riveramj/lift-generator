@@ -1,6 +1,5 @@
 import sbt._
 import Keys._
-import com.earldouglas.xsbtwebplugin._
 
 name := "${appName}"
 
