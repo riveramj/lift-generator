@@ -18,7 +18,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= {
-  val liftVersion = "3.0.1"
+  val liftVersion = "${liftVersion}"
   Seq(
     "ch.qos.logback"      %  "logback-classic"    % "1.1.3",
     "org.eclipse.jetty"   %  "jetty-webapp"       % "9.2.13.v20150730" % "container; compile->default",

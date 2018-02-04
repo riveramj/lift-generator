@@ -63,6 +63,9 @@ scalaVersion=$scalaVersionCurrent
 #done
 
 buildFileChoice=1
+
+liftVersion=`curl -s https://api.github.com/repos/lift/framework/releases/latest| grep "tag_name" | sed 's/[^0-9\.]*//g'`
+
 pathsFilePath="$appPath/src/main/scala/$folderStructure/util/Paths.scala"
 bootFilePath="$appPath/src/main/scala/bootstrap/liftweb/Boot.scala"
 
@@ -127,6 +130,7 @@ build=$(sed \
   -e "s/\${appVersion}/$appVersion/" \
   -e "s/\${organization}/$organization/" \
   -e "s/\${scalaVersion}/$scalaVersion/" \
+  -e "s/\${liftVersion}/$liftVersion/" \
   $buildFilePath)
 echo "$build" > "$buildFilePath"
 
