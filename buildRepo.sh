@@ -66,8 +66,14 @@ buildFileChoice=1
 
 liftVersion=`curl -s https://api.github.com/repos/lift/framework/releases/latest| grep "tag_name" | sed 's/[^0-9\.]*//g'`
 
+logbackVersion="1.2.3"
+xsbtPluginVersion="4.0.1"
+jettyVersion="9.4.8.v20171121"
+sbtVersion="1.1.0"
+
 pathsFilePath="$appPath/src/main/scala/$folderStructure/util/Paths.scala"
 bootFilePath="$appPath/src/main/scala/bootstrap/liftweb/Boot.scala"
+buildPropertiesPath="./project/build.properties"
 
 cd $appPath
 
@@ -118,6 +124,7 @@ else
 fi
 
 cp "$startingFilesDir/plugins.sbt" "./project/plugins.sbt"
+cp "$startingFilesDir/build.properties" $buildPropertiesPath
 cp "$startingFilesDir/Boot.scala" $bootFilePath
 cp "$startingFilesDir/Paths.scala" $pathsFilePath
 cp "$startingFilesDir/default.logback.xml" "src/main/resources/default.logback.xml"
@@ -131,8 +138,18 @@ build=$(sed \
   -e "s/\${organization}/$organization/" \
   -e "s/\${scalaVersion}/$scalaVersion/" \
   -e "s/\${liftVersion}/$liftVersion/" \
+  -e "s/\${logbackVersion}/$logbackVersion/" \
+  -e "s/\${jettyVersion}/$jettyVersion/" \
   $buildFilePath)
 echo "$build" > "$buildFilePath"
+
+sbtPluginPath="./project/plugins.sbt"
+
+sbtPlugins=$(sed -e "s/\${xsbtPluginVersion}/$xsbtPluginVersion/" $sbtPluginPath)
+echo "$sbtPlugins" > $sbtPluginPath
+
+buildProperties=$(sed -e "s/\${sbtVersion}/$sbtVersion/" $buildPropertiesPath)
+echo "$buildProperties" > $buildPropertiesPath
 
 boot=$(sed -e "s/\${organization}/$organization/" $bootFilePath)
 echo "$boot" > $bootFilePath

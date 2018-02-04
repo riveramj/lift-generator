@@ -18,8 +18,8 @@ object Build extends Build {
     libraryDependencies ++= {
       val liftVersion = "${liftVersion}"
       Seq(
-        "ch.qos.logback"      %  "logback-classic"    % "1.1.3",
-        "org.eclipse.jetty"   %  "jetty-webapp"       % "9.2.13.v20150730" % "container; compile->default",
+        "ch.qos.logback"      %  "logback-classic"    % "${logbackVersion}",
+        "org.eclipse.jetty"   %  "jetty-webapp"       % "${jettyVersion}" % "container; compile->default",
         "net.liftweb"         %% "lift-common"        % liftVersion % "compile",
         "net.liftweb"         %% "lift-webkit"        % liftVersion % "compile",
         "net.liftweb"         %% "lift-testkit"       % liftVersion % "test",
