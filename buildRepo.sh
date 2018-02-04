@@ -107,7 +107,6 @@ touch "src/test/scala/$folderStructure/model/.keep"
 touch "src/test/scala/$folderStructure/util/.keep"
 
 # Create empty files as placeholders
-touch "src/main/webapp/index.html"
 touch "src/main/webapp/static/index.html"
 touch "src/test/resources/default.logback-test.xml"
 touch "src/main/resources/props/default.props"
@@ -129,6 +128,7 @@ cp "$startingFilesDir/Boot.scala" $bootFilePath
 cp "$startingFilesDir/Paths.scala" $pathsFilePath
 cp "$startingFilesDir/default.logback.xml" "src/main/resources/default.logback.xml"
 cp "$startingFilesDir/web.xml" "src/main/webapp/WEB-INF/web.xml"
+cp "$startingFilesDir/index.html" "src/main/webapp/index.html"
 
 #Replace values in created default files
 
