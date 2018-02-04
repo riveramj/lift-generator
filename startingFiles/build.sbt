@@ -1,6 +1,5 @@
 import sbt._
 import Keys._
-import com.earldouglas.xsbtwebplugin._
 
 name := "${appName}"
 
@@ -10,7 +9,7 @@ organization := "${organization}"
 
 scalaVersion := "${scalaVersion}"
 
-Seq(webSettings :_*)
+enablePlugins(JettyPlugin)
 
 resolvers ++= Seq(
   "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
@@ -18,10 +17,10 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= {
-  val liftVersion = "3.0.1"
+  val liftVersion = "${liftVersion}"
   Seq(
-    "ch.qos.logback"      %  "logback-classic"    % "1.1.3",
-    "org.eclipse.jetty"   %  "jetty-webapp"       % "9.2.13.v20150730" % "container; compile->default",
+    "ch.qos.logback"      %  "logback-classic"    % "${logbackVersion}",
+    "org.eclipse.jetty"   %  "jetty-webapp"       % "${jettyVersion}" % "container; compile->default",
     "net.liftweb"         %% "lift-common"        % liftVersion % "compile",
     "net.liftweb"         %% "lift-webkit"        % liftVersion % "compile",
     "net.liftweb"         %% "lift-testkit"       % liftVersion % "test",
