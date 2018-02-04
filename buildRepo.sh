@@ -47,10 +47,6 @@ appVersionDefault="0.1-SNAPSHOT"
 read -p "What is the starting version [$appVersionDefault]: " appVersion
 appVersion=${appVersion:-$appVersionDefault}
 
-scalaVersionCurrent="2.12.2"
-read -p "What scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
-scalaVersion=${scalaVersion:-$scalaVersionCurrent}
-
 buildFileChoice=""
 while [[ ! $buildFileChoice =~ ^[1-2]$ ]]; do
   read -p "Choose a build file to use. 
@@ -58,6 +54,12 @@ while [[ ! $buildFileChoice =~ ^[1-2]$ ]]; do
     [2] build.scala
   " buildFileChoice
 done
+scalaVersionCurrent="2.12.4"
+
+#read -p "What scala version do you want to use? [$scalaVersionCurrent]: " scalaVersion
+#scalaVersion=${scalaVersion:-$scalaVersionCurrent}
+
+scalaVersion=$scalaVersionCurrent
 
 pathsFilePath="$appPath/src/main/scala/$folderStructure/util/Paths.scala"
 bootFilePath="$appPath/src/main/scala/bootstrap/liftweb/Boot.scala"
